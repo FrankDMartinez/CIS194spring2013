@@ -21,3 +21,8 @@ doubleEveryOtherHelper :: [Integer] -> [Integer]
 doubleEveryOtherHelper []         = []
 doubleEveryOtherHelper (a:[])        = [a]
 doubleEveryOtherHelper (a:(b:cs)) = (a) : (2*b) : (doubleEveryOtherHelper cs)
+
+-- sums all the digits of each number in a given list (e.g.,
+-- [16,7,12,5] => 1 + 6 + 7 + 1 + 2 + 5 => 22
+sumDigits :: [Integer] -> Integer
+sumDigits as = sum [ sum (toDigits a) | a <- as ]
