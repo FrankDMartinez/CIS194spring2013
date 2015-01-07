@@ -26,3 +26,7 @@ doubleEveryOtherHelper (a:(b:cs)) = (a) : (2*b) : (doubleEveryOtherHelper cs)
 -- [16,7,12,5] => 1 + 6 + 7 + 1 + 2 + 5 => 22
 sumDigits :: [Integer] -> Integer
 sumDigits as = sum [ sum (toDigits a) | a <- as ]
+
+-- indicates whether an `Integer` could be a valid credit card number
+validate :: Integer -> Bool
+validate a = (sumDigits (doubleEveryOther (toDigits a)) `mod` 10) == 0
