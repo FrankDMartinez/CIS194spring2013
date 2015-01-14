@@ -13,3 +13,4 @@ CIS 194: Introduction to Haskell (Spring 2013 Version)
 7. Typing `:?` at the `ghci` prompt prints a long help message.
 8. Commas in a list are separators and not terminators; ending a list with just a comma will result in a parse error.
 9. When You see an error message, ***DON'T PANIC***; when You see an error message You do not understand, ***DON'T PANIC***; just read what is on the screen because *that's why it is there*.
+10. Use record syntax by default; require a ***REALLY*** good reason for not doing so. As one Person put it, "Use this [record syntax] like it's going to give You head!"
