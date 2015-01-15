@@ -14,3 +14,8 @@ CIS 194: Introduction to Haskell (Spring 2013 Version)
 8. Commas in a list are separators and not terminators; ending a list with just a comma will result in a parse error.
 9. When You see an error message, ***DON'T PANIC***; when You see an error message You do not understand, ***DON'T PANIC***; just read what is on the screen because *that's why it is there*.
 10. Use record syntax by default; require a ***REALLY*** good reason for not doing so. As one Person put it, "Use this [record syntax] like it's going to give You head!"
+11. Use `-fwarn-name-shadowing` to get a warning during compilation if a name is shadowed.
+12. Variables can be defined at the top level of a source file.
+13. Top level declarations may start in any column as long as all subsequent top level declarations do the same.
+14. Always adhere to the "offside rule" and avoid explicit structuring.
+15. Using a single identifier as a pattern will always match; it will not reference any top level declaration of the same name.
