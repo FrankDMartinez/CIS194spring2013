@@ -19,3 +19,4 @@ CIS 194: Introduction to Haskell (Spring 2013 Version)
 13. Top level declarations may start in any column as long as all subsequent top level declarations do the same.
 14. Always adhere to the "offside rule" and avoid explicit structuring.
 15. Using a single identifier as a pattern will always match; it will not reference any top level declaration of the same name.
+16. A pattern of the form `a@b` can be used to match a value against the pattern `b` but also give the name `a` to the entire value being matched for use in the corresponding expression.
