@@ -40,3 +40,10 @@ insert a b = let (LogMessage _ d _) = a
 -- given list
 build :: [LogMessage] -> MessageTree
 build a = foldr insert Leaf a
+
+-- takes a sorted `MessageTree` and produces a list of all the
+-- `LogMessages` it contains, sorted by timestamp from smallest to
+-- biggest
+inOrder :: MessageTree -> [LogMessage]
+inOrder Leaf = []
+inOrder (Node a b c) = (inOrder a) ++ [b] ++ (inOrder c)
