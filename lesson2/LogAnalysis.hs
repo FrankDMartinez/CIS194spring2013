@@ -35,3 +35,8 @@ insert a b = let (LogMessage _ d _) = a
               in if d < j
                  then (Node (insert a f) g h)
                  else (Node f g (insert a h))
+
+-- builds up a `MessageTree` containing the `LogMessage`s in the
+-- given list
+build :: [LogMessage] -> MessageTree
+build a = foldr insert Leaf a
