@@ -47,3 +47,9 @@ build a = foldr insert Leaf a
 inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf = []
 inOrder (Node a b c) = (inOrder a) ++ [b] ++ (inOrder c)
+
+-- takes an unsorted list of `LogMessages`, and returns a list of the
+-- messages corresponding to any errors with a severity of 50 or
+-- greater, sorted by time stamp
+whatWentWrong :: [LogMessage] -> [String]
+whatWentWrong a = [c | (LogMessage (Error b) _ c) <- (inOrder (build a)), b >= 50]
