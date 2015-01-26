@@ -55,3 +55,23 @@ compactness had I bothered to write out commentary restating the
 requirements of the exercise, a point I feel scores in favor of
 literate Haskell.
 -}
+
+{-
+Though I stated/implied in commentary for the previous exercise above
+a desire, if not preference, for literate Haskell, for the duration
+of this lesson, I will continue to use traditional Haskell and
+reassess afterwards.
+-}
+
+-- produces a list of local maxima from a list of `Integer`s where
+-- "local maxima" is defined as "an element of a list which is
+-- strictly greater than both the elements immediately before and
+-- after it"; therefore, the particular element must have elements
+-- both before and after it and it must have a value greater than
+-- both; elements at the beginning and end of a list are,
+-- consequently, excluded
+localMaxima :: [Integer] -> [Integer]
+localMaxima as@(a:b:c:_) = if (b > a) && (b > c)
+                           then b : localMaxima (tail as)
+                           else localMaxima (tail as)
+localMaxima _ = []
