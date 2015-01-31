@@ -2,27 +2,19 @@
 module Golf where
 
 import Data.List
-import Safe
 
 -- produces a list of lists where the x-th list entry in the output
 -- contains every x-th element from the input
 skips :: [a] -> [[a]]
-skips as = skips' 1 as
+skips as = [skipsEvery b as | b <- [0..(length as)-1]]
 
-skips' :: Int -> [a] -> [[a]]
-skips' b ds = if b > length ds
-              then []
-              else skipsEvery ds b : skips' (b+1) ds
-
-skipsEvery :: [a] -> Int -> [a]
-skipsEvery as b = skipsEvery' (b-1) b as
-
-skipsEvery' :: Int -> Int -> [a] -> [a]
-skipsEvery' b c ds = case ds `atMay` b of
-                          Nothing -> []
-                          Just e -> e : skipsEvery' (b+c) c ds
+skipsEvery :: Int -> [a] -> [a]
+skipsEvery b cs = case drop b cs of
+                    [] -> []
+                    (d:ds) -> d : skipsEvery b ds
 
 {-
+NOTE: As of the most recent alteration, the following is no long "simpler".
 Someone pointed out a simpler solution which is more recursion intensive, a point I think on which the lesson is focusing (My commentary is spliced between definitions):
 > module Golf where
 >
