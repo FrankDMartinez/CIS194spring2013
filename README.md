@@ -3,7 +3,7 @@ CIS194spring2013
 
 CIS 194: Introduction to Haskell (Spring 2013 Version)
 
-##Some Notes I have found useful:
+##Some Notes I Have Found Useful (Yes, I know there's a lot of them):
 1. Use `-fwarn-incomplete-patterns` to get a warning during compilation if a sequence of patterns do not match all of a type's value constructors.
 2. "As we have already mentioned, a Haskell implementation checks patterns for matches in the order in which we specify them in our equations. Matching proceeds from top to bottom, and stops at the first success. Equations below a successful match have no effect." -- *Real World Haskell*, chapter 3
 3. "From reading the preceding sections, it should now be clear that ***all* of the data types that we define with the `data` keyword are algebraic data types**. Some may have just one alternative, while others have several, but they're all using the same machinery." -- *Real World Haskell*, chapter 3, emphasis added
@@ -44,3 +44,8 @@ CIS 194: Introduction to Haskell (Spring 2013 Version)
 38. `filter` takes a predicate and a list and returns the list of elements which satisfy the predicate.
 39. Use `(.)` and `($)` to reduce the need for parentheses but be sure to not over-do it or You'll reduce readability.
 40. Use `let` bindings to make the code even more readable.
+41. A recommended practice when writing a function is for the arguments to be ordered from "least to greatest variation" so arguments which will often be the same appear listed first and arguments which will often be different come last.
+42. Another recommended practice when writing a function is, instead of thinking about what You want to do with each element, think about making incremental transformations to the entire input, using the existing recursion patterns You know, such as maps, filters, and/or folds; make a "pipeline" of function calls, especially if when doing so increases readability of the code.
+43. Use "point-free" style when, and only when doing so increases readability of the code.
+44. Use `const` when You have another function which takes a function argument You want to just "swallow" and do nothing with.
+45. When using folds, prefer `foldl'` from `Data.List` over `foldl` from `Prelude`; it's more efficient.
