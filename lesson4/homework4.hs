@@ -47,3 +47,8 @@ addToBalancedTree a (Node _ b c d) = Node height newB c newD
 heightFunction :: Tree a -> Integer
 heightFunction Leaf = -1
 heightFunction (Node height _ _ _) = height
+
+-- takes a `List` of `Bool`s and returns a `Bool` indicating whether or
+-- not the given `List` contains an odd number of `True` values
+xor :: [Bool] -> Bool
+xor = foldr (/=) False
