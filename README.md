@@ -49,3 +49,4 @@ CIS 194: Introduction to Haskell (Spring 2013 Version)
 43. Use "point-free" style when, and only when doing so increases readability of the code.
 44. Use `const` when You have another function which takes a function argument You want to just "swallow" and do nothing with.
 45. When using folds, prefer `foldl'` from `Data.List` over `foldl` from `Prelude`; it's more efficient.
+46. Remember, lambdas are real functions, just like traditional named ones; the absence of a name makes a lambda no less a function than, say, `map`, `foldr`, `split`, etc.; like Chief justice John Roberts alluded it to in *NFIB v. Sebelius*, what a thing is called is not nearly as important as how it operates.

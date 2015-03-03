@@ -1,8 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 module Homework4 where
 
-import Data.List
-
 -- multiplies together all even values in a given list of
 -- `Integers`; if no even values appear in the list, 1 is
 -- returned
@@ -52,3 +50,8 @@ heightFunction (Node height _ _ _) = height
 -- not the given `List` contains an odd number of `True` values
 xor :: [Bool] -> Bool
 xor = foldr (/=) False
+
+-- takes a function and a `List` and returns a `List` with the given
+-- function applied to each element of the given `List`
+map' :: (a->b) -> [a] -> [b]
+map' f = foldr (\c resultSoFar -> f c : resultSoFar) []
