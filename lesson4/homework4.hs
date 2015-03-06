@@ -1,6 +1,8 @@
 {-# OPTIONS_GHC -Wall #-}
 module Homework4 where
 
+import Data.List
+
 -- multiplies together all even values in a given list of
 -- `Integers`; if no even values appear in the list, 1 is
 -- returned
@@ -55,3 +57,32 @@ xor = foldr (/=) False
 -- function applied to each element of the given `List`
 map' :: (a->b) -> [a] -> [b]
 map' f = foldr (\c resultSoFar -> f c : resultSoFar) []
+
+-- takes two `List`s and returns the Cartesian product of them
+cartProd :: [a] -> [b] -> [(a, b)]
+cartProd xs ys = [(x,y) | x <- xs, y <- ys]
+
+-- takes an `Int` and returns a list of odd primes greater than or
+-- equal to 3 and less than 2 more than twice the given `Int`
+sieve :: Int -> [Int]
+sieve n = map bump ([1..n] \\ map summation (filter (\b -> uncurry (<=) b && summation b <= n) (cartProd [1..n] [1..n])))
+  where summation c = uncurry (+) c + 2 * uncurry (*) c
+        bump d = 2*d + 1
+
+{-
+- Note: while the above solution uses the `cartProd` function
+- mentioned in the assignment, Someone did suggest using the
+- following instead:
+-
+- sundaram :: Integer -> [Integer]
+- sundaram n = 2 : map bump remaining
+-   where
+-   bump x    = 1+2*x
+-   remaining = [1..n] \\ crossout
+-   crossout  = do i <- [1..n]
+-                  takeWhile (<= n) [i+j+2*i*j | j <- [i..]]
+-
+- The idea being: naming more things and using less `uncurry`.
+- Granted, this solution appears to use some features which have not
+- been taught in the CIS194 at this point.
+-}
